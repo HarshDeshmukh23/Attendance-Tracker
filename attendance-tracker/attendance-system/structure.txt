@@ -1,0 +1,8 @@
+attendance-system/
+├── index.html
+├── style.css
+├── app.js
+├── face-recognition.js
+├── attendance-tracker.js
+└── data/
+    └── students.json

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition Attendance System</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Import face-api.js library -->
+    <script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Face Recognition Attendance System</h1>
+        
+        <div class="camera-container">
+            <video id="video" width="640" height="480" autoplay muted></video>
+            <canvas id="overlay" width="640" height="480"></canvas>
+            
+            <div class="controls">
+                <button id="start-camera">Start Camera</button>
+                <button id="mark-attendance" disabled>Mark Attendance</button>
+            </div>
+        </div>
+        
+        <div class="attendance-log">
+            <h2>Attendance Log</h2>
+            <div id="status-message"></div>
+            <table id="attendance-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Time</th>
+                        <th>Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="attendance-records">
+                    <!-- Attendance records will be added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Load our JavaScript files -->
+    <script src="face-recognition.js"></script>
+    <script src="attendance-tracker.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

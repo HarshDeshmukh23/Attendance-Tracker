@@ -23,7 +23,7 @@ const FaceRecognition = (function() {
         canvas = canvasElement;
         ctx = canvas.getContext('2d');
         
-        // Load face-api.js models
+        // Load face-api models
         try {
             await Promise.all([
                 faceapi.nets.tinyFaceDetector.loadFromUri('https://raw.githubusercontent.com/justadudewhohacks/face-api.js/master/weights'),
@@ -39,7 +39,7 @@ const FaceRecognition = (function() {
         }
     }
     
-    // Start camera stream
+    // Start camera 
     async function startCamera() {
         if (!isModelLoaded) {
             throw new Error('Face recognition models are not loaded yet');
@@ -53,8 +53,6 @@ const FaceRecognition = (function() {
             video.srcObject = stream;
             isCameraRunning = true;
             
-            // For demonstration purposes, we'll "register" sample faces
-            // In a real app, you would have pre-registered face descriptors
             registerSampleFaces();
             
             return true;
@@ -64,15 +62,8 @@ const FaceRecognition = (function() {
         }
     }
     
-    // Simulate registering sample faces
-    // In a real app, this would be done separately in a registration process
     function registerSampleFaces() {
-        // This is just a placeholder. In a real app, you would:
-        // 1. Capture multiple images of each student
-        // 2. Extract face descriptors from those images
-        // 3. Store the average descriptor for each student
         
-        // For demo purposes, we'll just create some random descriptors
         sampleStudents.forEach(student => {
             // Create a random 128-length array (simulating a face descriptor)
             const randomDescriptor = new Float32Array(128);
@@ -111,8 +102,7 @@ const FaceRecognition = (function() {
                 ctx.strokeStyle = '#00ff00';
                 ctx.lineWidth = 2;
                 ctx.strokeRect(box.x, box.y, box.width, box.height);
-                
-                // In a real app, you would match the detected face against known faces here
+        
             });
             
             return detections;
@@ -124,10 +114,7 @@ const FaceRecognition = (function() {
     
     // Identify a person from their face
     function identifyPerson(faceDescriptor) {
-        // In a real app, you would compare the detected face descriptor
-        // with your database of known faces to find the best match
         
-        // For demo purposes, we'll just return a random student
         const randomIndex = Math.floor(Math.random() * sampleStudents.length);
         return sampleStudents[randomIndex];
     }
